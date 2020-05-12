@@ -12,5 +12,6 @@ class ProcessorSeeder extends Seeder
     public function run()
     {
         //
+        factory(\App\Processor::class, 10) -> create();
     }
 }

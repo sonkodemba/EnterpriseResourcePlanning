@@ -15,6 +15,7 @@ class CreateItemCategoriesTable extends Migration
     {
         Schema::create('item_categories', function (Blueprint $table) {
             $table->id();
+            $table -> string('code') -> unique()->nullable();
             $table -> string('name') -> unique();
             $table -> longText('descriptions')->nullable();
             $table -> softDeletes();

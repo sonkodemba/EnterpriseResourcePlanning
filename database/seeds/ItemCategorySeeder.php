@@ -12,5 +12,6 @@ class ItemCategorySeeder extends Seeder
     public function run()
     {
         //
+        factory(\App\ItemCategory::class, 10) -> create();
     }
 }

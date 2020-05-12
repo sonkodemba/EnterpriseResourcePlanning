@@ -15,7 +15,7 @@ class CreateEmployeeEducationTable extends Migration
     {
         Schema::create('employee_education', function (Blueprint $table) {
             $table->id();
-            $table -> string('highest_education') -> unique();
+            $table -> string('education') -> unique();
             $table -> longText('descriptions')->nullable();
             $table->softDeletes();
             $table->timestamps();

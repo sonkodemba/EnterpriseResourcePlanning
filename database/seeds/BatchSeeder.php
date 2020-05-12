@@ -1,5 +1,6 @@
 <?php
 
+use App\Batch;
 use Illuminate\Database\Seeder;
 
 class BatchSeeder extends Seeder
@@ -11,6 +12,6 @@ class BatchSeeder extends Seeder
      */
     public function run()
     {
-        //
+        factory(Batch::class, 10) -> create();
     }
 }

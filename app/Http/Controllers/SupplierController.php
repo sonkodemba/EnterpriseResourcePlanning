@@ -17,8 +17,8 @@ class SupplierController extends Controller
         /**
          * Get the List of Supplier Details Here
          */
-        $suppliers = Supplier::all();
-        return view('supplier.suppliers.index',compact('suppliers'));
+        $suppliers = Supplier::paginate(4);
+        return view('item.supplier.suppliers.index',compact('suppliers'));
 
     }
 
@@ -32,7 +32,7 @@ class SupplierController extends Controller
         /**
          * ret me the view for Create
          */
-        return view('supplier.suppliers.create');
+        return view('item.supplier.suppliers.create');
     }
 
     /**
@@ -72,31 +72,50 @@ class SupplierController extends Controller
         $supplier -> category_id = $request['category_id'];
         $gppa = $supplier -> gppa_license_no = $request['gppa_license_no'];
         $trade = $supplier -> trade_license_no = $request['trade_license_no'];
-
+        $tin_no = $supplier -> tin = $request['tin'];
 
         if ($request->file('gppa_license')) {
-            $file = $request->file('gppa_license');
-            $extension = $file->getClientOriginalExtension();
-            $filename = $gppa . '.' . $extension;
-            $file->move('upload/gppa', $filename);
+            $gppa_lic = $request->file('gppa_license');
+            $extension = $gppa_lic->getClientOriginalExtension();
+            $filename = $gppa.'_'.time().'.' . $extension;
+            $gppa_lic->move('upload/gppa', $filename);
             $supplier->gppa_license = $filename;
         }
 
-         $supplier -> trade_license = $request['trade_license'];
-        if ($request->file('trade_license')) {
-            $file = $request->file('trade_license');
-            $extension = $file->getClientOriginalExtension();
-            $filename = $trade . '.' . $extension;
-            $file->move('upload/TradeLicense', $filename);
-            $supplier->trade_license = $filename;
-
+        else{
+            return $request;
+            $supplier->gppa_license = '';
         }
+
+        if ($request -> file('trade_license')){
+            $trade_lic = $request -> file('trade_license');
+            $ext = $trade_lic -> getClientOriginalExtension();
+            $fname = $trade.'_'.time().'.'.$ext;
+            $trade_lic -> move('upload/trade_License', $fname);
+            $supplier -> trade_license = $fname;
+        }
+        else{
+            return $request;
+            $supplier->trade_license = '';
+        }
+        if ($request -> file('tin_certificate')){
+            $tin_cert = $request->file('tin_certificate');
+            $tin_ext = $tin_cert -> getClientOriginalExtension();
+            $tin_file_name = $tin_no.'_'.time().'.'.$tin_ext;
+            $tin_cert -> move('upload/tin_certificate',$tin_file_name);
+        }
+        else{
+            return $request;
+            $supplier -> tin_certificate = $tin_file_name;
+        }
+        $supplier -> trade_license = $request['trade_license'];
         $supplier -> address = $request['address'];
         $supplier -> telephone = $request['telephone'];
         $supplier -> email = $request['email'];
 
          $supplier -> save();
-        return redirect()-> route('suppliers.index')->with('success',$supplier_name.' Added Successfully');
+        return redirect()-> route('suppliers.index')
+            ->with('success',ucfirst($supplier_name).' Added Successfully');
     }
 
     /**
@@ -110,18 +129,19 @@ class SupplierController extends Controller
         /**
          * get the @ID of the Supplier and Show
          */
-     return view('supplier.suppliers.show',compact('supplier'));
+     return view('item.supplier.suppliers.show',compact('supplier'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
      * @param  \App\Supplier  $supplier
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function edit(Supplier $supplier)
     {
         //
+        return view('item.supplier.suppliers.edit',compact('supplier'));
     }
 
     /**
@@ -146,4 +166,7 @@ class SupplierController extends Controller
     {
         //
     }
+
+
+
 }

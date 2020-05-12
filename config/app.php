@@ -186,6 +186,12 @@ return [
         App\Providers\ProjectProvider::class,
         App\Providers\EmployeeEducation::class,
         App\Providers\SupplierCategory::class,
+        App\Providers\SupplierProvider::class,
+        App\Providers\BatchProvider::class,
+        App\Providers\ItemCategoryProvider::class,
+        App\Providers\ItemModelProvider::class,
+        App\Providers\ProcessorProvider::class,
+
 
     ],
 

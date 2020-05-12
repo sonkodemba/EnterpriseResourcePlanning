@@ -20,7 +20,7 @@ class DepartmentController extends Controller
     public function index()
     {
         $departments= Department::paginate(3);
-        return  view('departments.index', compact('departments'));
+        return  view('employee.departments.index', compact('departments'));
     }
 
     /**
@@ -31,7 +31,7 @@ class DepartmentController extends Controller
     public function create()
     {
 
-        return view('departments.create');
+        return view('employee.departments.create');
     }
 
     /**
@@ -43,10 +43,10 @@ class DepartmentController extends Controller
      */
     public function store(Request $request, Department $department)
     {
-        $department -> name = $request['name'];
+        $dept = $department -> name = $request['name'];
         $department -> descriptions = $request['descriptions'];
         $department -> save();
-        return redirect()->route('departments.index') -> with('success', 'department successfully saved');
+        return redirect()->route('departments.index') -> with('success', ucfirst($dept).' successfully saved');
     }
 
     /**

@@ -11,6 +11,6 @@ class TaskUserSeeder extends Seeder
      */
     public function run()
     {
-        //
+        factory(\App\TaskUser::class, 10) -> create();
     }
 }

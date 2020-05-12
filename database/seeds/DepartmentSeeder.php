@@ -12,5 +12,7 @@ class DepartmentSeeder extends Seeder
     public function run()
     {
         //
+        factory(\App\Department::class, 4)->create();
+
     }
 }

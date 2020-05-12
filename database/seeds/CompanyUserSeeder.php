@@ -1,5 +1,6 @@
 <?php
 
+use App\CompanyUser;
 use Illuminate\Database\Seeder;
 
 class CompanyUserSeeder extends Seeder
@@ -12,5 +13,6 @@ class CompanyUserSeeder extends Seeder
     public function run()
     {
         //
+        factory(CompanyUser::class, 10) ->create();
     }
 }

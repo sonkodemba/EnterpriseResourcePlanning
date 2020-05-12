@@ -15,6 +15,7 @@ class CreateSupplierCategoriesTable extends Migration
     {
         Schema::create('supplier_categories', function (Blueprint $table) {
             $table->id();
+            $table -> string('code') -> unique();
             $table -> string('name')->unique();
             $table -> longText('descriptions')->nullable();
             $table -> softDeletes();

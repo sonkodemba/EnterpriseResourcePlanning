@@ -19,7 +19,7 @@ class DesignationController extends Controller
 //        $designations = Designation::paginate(15);
 //        $designations = DB::table('designations') -> paginate(5);
            $designations =  Designation::paginate(5);
-        return view('designations.index', compact('designations'));
+        return view('employee.designations.index', compact('designations'));
     }
 
     /**
@@ -29,7 +29,7 @@ class DesignationController extends Controller
      */
     public function create()
     {
-        return  view('designations.create');
+        return  view('employee.designations.create');
         //
     }
 
@@ -46,7 +46,7 @@ class DesignationController extends Controller
        $name =  $designation -> name = $request['name'];
         $designation -> descriptions = $request['descriptions'];
         $designation -> save();
-        return  redirect() -> route('designations.index') -> with('success', $name.' created Sucessfully');
+        return  redirect() -> route('designations.index') -> with('success', ucfirst($name).' created Sucessfully');
     }
 
     /**

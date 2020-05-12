@@ -20,29 +20,42 @@ Route::get('/', function () {
 });
 
 Route::resources([
+    /**
+     * Employee Routes
+     */
         'users' => 'UserController',
         'employees' => 'EmployeeController',
+        'educations'=> 'EmployeeEducationController',
         'departments' => 'DepartmentController',
         'designations' => 'DesignationController',
+
+    /**
+     * Project Routes
+     */
         'projects' => 'ProjectController',
         'projectusers' =>'ProjectUserController',
         'companies' => 'CompanyController',
         'tasks' => 'TaskController',
 
+
     /**
      * Item Routes
      */
         'items' => 'ItemController',
-        'itemCategories' => 'ItemCategoryController',
-        'itemModels' => 'ItemModelController',
+        'itemcategories' => 'ItemCategoryController',
+        'itemmodels' => 'ItemModelController',
         'processors' => 'ProcessorController',
-        'supplierCategories' => 'SupplierCategoryController',
+        'suppliercategories' => 'SupplierCategoryController',
         'suppliers' => 'SupplierController',
         'batches'=> 'BatchController',
 
 ]);
 
+/**
+ * custom Routes
+ */
 
-Auth::routes();
+
+ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

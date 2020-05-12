@@ -15,6 +15,7 @@ class CreateItemsTable extends Migration
     {
         Schema::create('items', function (Blueprint $table) {
             $table->id();
+            $table -> longText('barcode') -> unique() -> nullable();
             $table -> bigInteger('batch_id')->unsigned();
             $table ->bigInteger('item_category_id')->unsigned();
             $table -> integer('wingle_no')->unsigned()->nullable();

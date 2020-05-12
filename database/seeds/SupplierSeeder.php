@@ -12,5 +12,6 @@ class SupplierSeeder extends Seeder
     public function run()
     {
         //
+        factory(\App\Supplier::class,10)-> create();
     }
 }

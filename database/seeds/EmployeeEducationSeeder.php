@@ -1,5 +1,6 @@
 <?php
 
+use App\EmployeeEducation;
 use Illuminate\Database\Seeder;
 
 class EmployeeEducationSeeder extends Seeder
@@ -12,5 +13,6 @@ class EmployeeEducationSeeder extends Seeder
     public function run()
     {
         //
+        factory(EmployeeEducation::class, 10) -> create();
     }
 }

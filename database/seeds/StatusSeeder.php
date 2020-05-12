@@ -1,5 +1,6 @@
 <?php
 
+use App\Status;
 use Illuminate\Database\Seeder;
 
 class StatusSeeder extends Seeder
@@ -12,5 +13,6 @@ class StatusSeeder extends Seeder
     public function run()
     {
         //
+        factory(Status::class, 10) -> create();
     }
 }

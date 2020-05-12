@@ -188,6 +188,16 @@
                             </i>
                         </a>
                     </li>
+
+                    <li class="nav-item">
+                        <a href="{{route('suppliercategories.index')}}" class="nav-link">
+                            <i class="fa fa-icons">
+
+                                Supplier Category
+
+                            </i>
+                        </a>
+                    </li>
                     <li class="nav-item">
                         <a href="{{route('items.index')}}" class="nav-link">
                             <i class="fa fa-icons">
@@ -197,6 +207,46 @@
                             </i>
                         </a>
                     </li>
+
+                    <li class="nav-item">
+                        <a href="{{route('batches.index')}}" class="nav-link">
+                            <i class="fa fa-icons">
+
+                                Batches / Consignments
+
+                            </i>
+                        </a>
+                    </li>
+
+                    <li class="nav-item has-treeview menu-open">
+                    <li class="nav-item">
+                        <a href="{{route('itemcategories.index')}}" class="nav-link action  ">
+                            <i class="fa fa-icons">
+
+                                Item Category
+
+                            </i>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{route('processors.index')}}" class="nav-link action  ">
+                            <i class="fa fa-icons">
+
+                                Processors
+
+                            </i>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{route('itemmodels.index')}}" class="nav-link action  ">
+                            <i class="fa fa-icons">
+
+                                Item Model / Brand
+
+                            </i>
+                        </a>
+                    </li>
+
                     <li class="nav-item">
                         <a href="{{route('employees.index')}}" class="nav-link">
                             <i class="fa fa-user-plus">
@@ -207,6 +257,16 @@
                         </a>
                     </li>
                     <li class="nav-item">
+                        <a href="{{route('educations.index')}}" class="nav-link">
+                            <i class="fa fa-building"></i>
+                            <p>
+                               Employee Education
+                            </p>
+
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
                         <a href="{{route('departments.index')}}" class="nav-link">
                             <i class="fa fa-building"></i>
                             <p>
@@ -215,6 +275,7 @@
 
                         </a>
                     </li>
+
                     <li class="nav-item has-treeview">
                         <a href="{{route('designations.index')}}" class="nav-link">
                             <i class="fa fa-ticket-alt"></i>
@@ -282,7 +343,7 @@
     </div>
     <!-- /.content-wrapper -->
     <footer class="main-footer">
-        <small>Copyright &copy; 2019-2020 <a  class="#" href="#">Premier Solutions</a></small>
+        <small>Copyright &copy; 2019-2020, Powered By <a  class="#" href="#"> Premier Solutions</a></small>
         All rights reserved.
         <div class="float-right d-none d-sm-inline-block">
             <b>Version</b> 3.0.4

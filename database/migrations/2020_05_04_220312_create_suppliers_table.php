@@ -20,8 +20,10 @@ class CreateSuppliersTable extends Migration
             $table -> bigInteger('category_id')->unsigned();
             $table -> string('gppa_license_no') -> unique();
             $table -> string('trade_license_no') -> unique();
+            $table -> integer('tin') -> unsigned()->unique();
             $table -> mediumText('gppa_license')->nullable();
             $table -> mediumText('trade_license')->nullable();
+            $table ->mediumText('tin_certificate')->nullable();
             $table->longText('address')->nullable();
             $table -> integer('telephone')->unsigned();
             $table -> string('email') -> unique();

@@ -12,5 +12,6 @@ class DesignationSeeder extends Seeder
     public function run()
     {
         //
+        factory(\App\Designation::class, 10) -> create();
     }
 }

@@ -12,5 +12,6 @@ class SupplierCategorySeeder extends Seeder
     public function run()
     {
         //
+        factory(App\SupplierCategory::class,10) -> create();
     }
 }

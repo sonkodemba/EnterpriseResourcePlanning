@@ -10,32 +10,40 @@ class ItemModelController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index()
     {
         //
+        $models = ItemModel::all();
+        return view('item.itemModels.index', compact('models'));
     }
 
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function create()
     {
         //
+        return view('item.itemModels.create');
     }
 
     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(Request $request)
     {
         //
+        $model = new ItemModel();
+        $nmed = $model -> name = $request['name'];
+        $model -> descriptions = $request['descriptions'];
+        $model -> save();
+        return  redirect() -> route('itemmodels.index') -> with('success',ucfirst($nmed).' Added Succesfully' );
     }
 
     /**
@@ -53,11 +61,14 @@ class ItemModelController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  \App\ItemModel  $itemModel
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function edit(ItemModel $itemModel)
     {
-        //
+        /**
+         * Fetch the View for the Edit
+         */
+        return view('item.itemModels.edit');
     }
 
     /**

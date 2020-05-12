@@ -23,7 +23,7 @@ class EmployeeController extends Controller
     public function index()
     {
         $employees = Employee::paginate(3);
-        return view('employees.index',compact('employees'));
+        return view('employee.employees.index',compact('employees'));
     }
 
     /**
@@ -34,7 +34,7 @@ class EmployeeController extends Controller
     public function create()
     {
         //
-        return  view('employees.create');
+        return  view('employee.employees.create');
     }
 
     /**
@@ -93,7 +93,7 @@ class EmployeeController extends Controller
     public function edit(Employee $employee)
     {
         $employee = Employee::find($employee->id);
-        return view('employees.edit',compact('employee'));
+        return view('employee.employees.edit',compact('employee'));
     }
 
     /**
