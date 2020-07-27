@@ -1,7 +1,5 @@
 <?php
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,41 +12,38 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+// Route::get('/emails', function(){
+//     return view('emails.users.welcome');
+// });
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    return view('auth.login');
+ });
 
 Route::resources([
     /**
-     * Employee Routes
+     * @Employee and @user
      */
         'users' => 'UserController',
+        'usercategories' => 'UserCategoryController',
         'employees' => 'EmployeeController',
         'educations'=> 'EmployeeEducationController',
-        'departments' => 'DepartmentController',
-        'designations' => 'DesignationController',
-
-    /**
-     * Project Routes
-     */
-        'projects' => 'ProjectController',
-        'projectusers' =>'ProjectUserController',
-        'companies' => 'CompanyController',
-        'tasks' => 'TaskController',
+        'categories' => 'EmploymentCategoryController',
 
 
     /**
-     * Item Routes
+     * @Evending_System
      */
-        'items' => 'ItemController',
-        'itemcategories' => 'ItemCategoryController',
-        'itemmodels' => 'ItemModelController',
-        'processors' => 'ProcessorController',
-        'suppliercategories' => 'SupplierCategoryController',
-        'suppliers' => 'SupplierController',
-        'batches'=> 'BatchController',
+        'evends' => 'EvendController',
+        'serviceCharges' => 'EvendServiceChargeController',
+        'endOfDays' => 'EvendEndOfDayController',
+        'cashDeposites' => 'CashDepositeSlipController',
+        'cashCollections' =>'CashCollectionController',
 
+    /**
+     * Route for The @Banks
+     */
+        'banks' => 'BankController',
 ]);
 
 /**

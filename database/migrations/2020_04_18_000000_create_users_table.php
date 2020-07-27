@@ -16,13 +16,20 @@ class CreateUsersTable extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table -> bigInteger('staff_id')->unsigned();
-            $table->string('email')->unique();
+            $table -> bigInteger('staff_id') -> unsigned() -> unique();
+             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
              $table->string('password');
-             $table -> softDeletes();
-//           $table -> foreign('staff_id')->references('id')->on('employees');
+             $table -> bigInteger('user_category_id') ->unsigned();
+             $table -> foreign('user_category_id')->references('id')->on('user_categories');
+             $table -> foreign('staff_id') -> references('staff_id') -> on('employees');
+            $table -> timestamp('current_login_at') -> nullable();
+            $table -> ipAddress('current_login_ip') -> nullable();
+            $table->timestamp('last_login_at')->nullable();
+            $table->ipAddress('last_login_ip')->nullable();
+            $table -> timestamp('last_logout_at') -> nullable();
             $table->rememberToken();
+            $table -> softDeletes();
             $table->timestamps();
         });
     }

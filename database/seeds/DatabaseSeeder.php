@@ -1,5 +1,6 @@
 <?php
 
+use App\ItemEmployee;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -11,42 +12,31 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-         $this->call([
+         $this->call(
+             [
+                 /**
+                  * Seeder for the Evend
+                  */
+                 /*
+                  * Bank and Cash Deposite
+                  */
+                 BankSeeder::class,
+                 CashDepositeSlipSeeder::class,
+                 EvendSeeder::class,
 
-             /**
-              * Employee Seeder
-              */
-            DepartmentSeeder::class,
-            DesignationSeeder::class,
-            EmployeeEducationSeeder::class,
-            EmployeeSeeder::class,
-            UserSeeder::class,
+//                EvendSeeder::class,
+                 /**
+                  * Employee Seeder
+                  */
 
-
-             /**
-              * Supplier Seeder
-              */
-             SupplierCategorySeeder::class,
-             SupplierSeeder::class,
-
-
-             /**
-              * Item Seeder
-              */
-             ItemCategorySeeder::class,
-             ItemModelSeeder::class,
-             BatchSeeder::class,
-             ProcessorSeeder::class,
-//             ItemSeeder::class,
-             /**
-              * Project Management Model
-              */
-             ProjectSeeder::class,
-             CompanySeeder::class,
-             TaskSeeder::class,
-             CommentSeeder::class
+                EmployeeEducationSeeder::class,
+                EmploymentCategorySeeder::class,
+                EmployeeSeeder::class,
+                UserCategorySeeder::class,
+                UserSeeder::class,
 
 
-         ]);
+            ]
+         );
     }
 }

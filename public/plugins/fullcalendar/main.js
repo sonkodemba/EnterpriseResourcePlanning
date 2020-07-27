@@ -4398,7 +4398,7 @@ Docs & License: https://fullcalendar.io/
         var endMarker = framingRange.end;
         var instanceStarts = [];
         while (dayMarker < endMarker) {
-            var instanceStart 
+            var instanceStart
             // if everyday, or this particular day-of-week
             = void 0;
             // if everyday, or this particular day-of-week
@@ -4830,7 +4830,7 @@ Docs & License: https://fullcalendar.io/
             }
             return { marker: marker, isTimeUnspecified: parts.isTimeUnspecified, forcedTzo: forcedTzo };
         };
-        // Accessors
+        // Departements
         DateEnv.prototype.getYear = function (marker) {
             return this.calendarSystem.getMarkerYear(marker);
         };

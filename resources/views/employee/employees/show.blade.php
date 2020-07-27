@@ -1,24 +1,6 @@
 @extends('layouts.admin')
 @section('content')
-
-    <div class="align-content-center">
-        <!-- Content Header (Page header) -->
-        <section class="content-header">
-            <div class="container-fluid">
-                <div class="row mb-2">
-                    <div class="col-sm-6">
-{{--                        <h1>Profile</h1>--}}
-                    </div>
-                    <div class="col-sm-6">
-                        <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active">USer name</li>
-                        </ol>
-                    </div>
-                </div>
-            </div><!-- /.container-fluid -->
-        </section>
-
+    <div class="jumbotron" style="padding-top: 10px">
         <!-- Main content -->
         <section class="content">
             <div class="container-fluid">
@@ -29,27 +11,28 @@
                         <div class="card card-primary card-outline">
                             <div class="card-body box-profile">
                                 <div class="text-center">
-                                     <img class="img-circle elevation-2" src="{{asset('upload/profile/'.$employee->image)}}"  width="100" height="100" alt="{{$employee -> name}}">
-
+                                    <img class="profile-user-img img-fluid img-circle"
+                                         src="../../dist/img/user4-128x128.jpg"
+                                         alt="User profile picture">
                                 </div>
 
-                            <h3 class="profile-username text-center">{{ucfirst($employee -> name)}}</h3>
+                                <h3 class="profile-username text-center">Nina Mcintire</h3>
 
-{{--                                <p class="text-muted text-center">{{$employee -> designation->name}}</p>--}}
+                                <p class="text-muted text-center">Software Engineer</p>
 
-{{--                                <ul class="list-group list-group-unbordered mb-3">--}}
-{{--                                    <li class="list-group-item">--}}
-{{--                                        <b>Department</b> <a class="float-right">{{$employee -> department->name}}</a>--}}
-{{--                                    </li>--}}
-{{--                                    <li class="list-group-item">--}}
-{{--                                        <b>Designation:</b> <a class="float-right">{{$employee -> designation->name}}</a>--}}
-{{--                                    </li>--}}
-{{--                                    <li class="list-group-item">--}}
-{{--                                        <b>Email:</b> <a class="float-right">{{$employee -> email}}</a>--}}
-{{--                                    </li>--}}
-{{--                                </ul>--}}
+                                <ul class="list-group list-group-unbordered mb-3">
+                                    <li class="list-group-item">
+                                        <b>Followers</b> <a class="float-right">1,322</a>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <b>Following</b> <a class="float-right">543</a>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <b>Friends</b> <a class="float-right">13,287</a>
+                                    </li>
+                                </ul>
 
-                                <a href="#" class="btn btn-primary btn-block"><b>Endorse</b></a>
+                                <a href="#" class="btn btn-primary btn-block"><b>Follow</b></a>
                             </div>
                             <!-- /.card-body -->
                         </div>
@@ -58,39 +41,39 @@
                         <!-- About Me Box -->
                         <div class="card card-primary">
                             <div class="card-header">
-                                <h3 class="card-title">About {{ucfirst($employee->name)}}</h3>
+                                <h3 class="card-title">About Me</h3>
                             </div>
                             <!-- /.card-header -->
                             <div class="card-body">
                                 <strong><i class="fas fa-book mr-1"></i> Education</strong>
 
                                 <p class="text-muted">
-                                   {{$employee -> education -> highest_education}}
+                                    B.S. in Computer Science from the University of Tennessee at Knoxville
                                 </p>
 
                                 <hr>
 
-                                <strong><i class="fas fa-map-marker-alt mr-1"></i> Address</strong>
+                                <strong><i class="fas fa-map-marker-alt mr-1"></i> Location</strong>
 
-                                <p class="text-muted">{{$employee -> address}}</p>
+                                <p class="text-muted">Malibu, California</p>
 
                                 <hr>
 
                                 <strong><i class="fas fa-pencil-alt mr-1"></i> Skills</strong>
 
                                 <p class="text-muted">
-                                    <span class="tag tag-danger">{{$employee -> designation -> name}}</span>
-{{--                                    <span class="tag tag-success">Coding</span>--}}
-{{--                                    <span class="tag tag-info">Javascript</span>--}}
-{{--                                    <span class="tag tag-warning">PHP</span>--}}
-{{--                                    <span class="tag tag-primary">Node.js</span>--}}
+                                    <span class="tag tag-danger">UI Design</span>
+                                    <span class="tag tag-success">Coding</span>
+                                    <span class="tag tag-info">Javascript</span>
+                                    <span class="tag tag-warning">PHP</span>
+                                    <span class="tag tag-primary">Node.js</span>
                                 </p>
 
                                 <hr>
 
                                 <strong><i class="far fa-file-alt mr-1"></i> Notes</strong>
 
-                                <p class="text-muted">{{$employee -> designation -> name}}</p>
+                                <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam fermentum enim neque.</p>
                             </div>
                             <!-- /.card-body -->
                         </div>
@@ -114,19 +97,18 @@
                                             <div class="user-block">
                                                 <img class="img-circle img-bordered-sm" src="../../dist/img/user1-128x128.jpg" alt="user image">
                                                 <span class="username">
-                          <a href="#">{{$employee->post}}</a>
+                          <a href="#">Jonathan Burke Jr.</a>
                           <a href="#" class="float-right btn-tool"><i class="fas fa-times"></i></a>
                         </span>
-                                                <span class="description">Shared publicly - {{$employee -> created_at ->diffForHumans()}}</span>
+                                                <span class="description">Shared publicly - 7:30 PM today</span>
                                             </div>
                                             <!-- /.user-block -->
                                             <p>
-{{--                                                Lorem ipsum represents a long-held tradition for designers,--}}
-{{--                                                typographers and the like. Some people hate it and argue for--}}
-{{--                                                its demise, but others ignore the hate as they create awesome--}}
-{{--                                                tools to help create filler text for everyone from bacon lovers--}}
-{{--                                                to Charlie Sheen fans.--}}
-                                                {{$employee -> post}}
+                                                Lorem ipsum represents a long-held tradition for designers,
+                                                typographers and the like. Some people hate it and argue for
+                                                its demise, but others ignore the hate as they create awesome
+                                                tools to help create filler text for everyone from bacon lovers
+                                                to Charlie Sheen fans.
                                             </p>
 
                                             <p>
@@ -382,5 +364,4 @@
         <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->
-
     @endsection

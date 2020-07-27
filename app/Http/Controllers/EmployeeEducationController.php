@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\EmployeeEducation;
+use App\Http\Requests\EmployeeEducationFormRequest;
 use Illuminate\Http\Request;
 
 class EmployeeEducationController extends Controller
@@ -15,7 +16,7 @@ class EmployeeEducationController extends Controller
     public function index()
     {
         //
-        $educations = EmployeeEducation::paginate(5);
+        $educations = EmployeeEducation::paginate(4);
         return view('employee.educations.index',compact('educations'));
     }
 
@@ -37,16 +38,16 @@ class EmployeeEducationController extends Controller
      * @param EmployeeEducation $education
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(Request $request, EmployeeEducation $education)
+    public function store(EmployeeEducationFormRequest $request, EmployeeEducation $education)
     {
-        //
-        $education_name = $education -> education = $request['name'];
-        $education -> descriptions = $request['descriptions'];
-        $education -> save();
-        return redirect() -> route('educations.index')
-                          -> with('success', ucfirst($education_name).' Added Successfully');
-    }
 
+        $education_name = $education->education = $request['name'];
+        $education->descriptions = $request['descriptions'];
+        $education->save();
+        return redirect()->route('educations.index')
+            ->with('success', ucfirst($education_name) . ' Added Successfully');
+
+    }
     /**
      * Display the specified resource.
      *

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
@@ -15,8 +16,7 @@ class UserController extends Controller
     public function index()
     {
         //
-//        $this->create('ba Musa Sonko','bamusa@nawec.gm','pasword');
-         $users = User::all();
+          $users = User:: latest() -> paginate(4);
         return view('users.index',compact('users'));
     }
 
@@ -25,11 +25,12 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create($name,$email,$password)
+    public function create($name,$staffid,$email,$password)
     {
         //
         $data = [
             'name' => $name,
+            'staff_id'=> $staffid,
             'email' => $email,
             'password' => $password
         ];
@@ -52,11 +53,11 @@ class UserController extends Controller
      * Display the specified resource.
      *
      * @param  \App\User  $user
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function show(User $user)
     {
-        //
+        return  view('users.show', compact('user'));
     }
 
     /**

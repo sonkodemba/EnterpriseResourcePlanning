@@ -8,15 +8,25 @@
                     <div class="card">
 
                         <div class="card-header">
-                            <h3>Create New Qualification</h3>
+                            <h3>
+                                <i class="fa fa-graduation-cap">
+                                Create Qualification
+                                </i>
+                            </h3>
                         </div>
                         <form class="form-horizontal" action="{{route('educations.store')}}" method="post" enctype="multipart/form-data">
                             @csrf
                             <div class="card-body">
                                 <div class="form-group row">
+                                    <label for="Name" class="col-sm-2 col-form-label">Code</label>
+                                    <div class="col-sm-10">
+                                        <input style="background-color: lightyellow" type="text" name="code" class="form-control" id="Name" placeholder="BSc. / Btech">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
                                     <label for="Name" class="col-sm-2 col-form-label">Qualification</label>
                                     <div class="col-sm-10">
-                                        <input style="background-color: lightyellow" type="text" name="name" class="form-control" id="Name" placeholder="BSc. / Btech">
+                                        <input style="background-color: lightyellow" type="text" name="name" class="form-control" id="Name" placeholder="Bachelors Degree">
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -27,6 +37,8 @@
                                 </div>
 
                                 <div class="card-footer">
+                                    <span class="badge btn-outline-danger float-lg-left"> Verify the Data Before you Hit the Save Button</span>
+
                                     <div class="float-md-right">
                                         <button  type="submit" class="btn btn-success">
                                             <i class="fa fa-save">Save</i>

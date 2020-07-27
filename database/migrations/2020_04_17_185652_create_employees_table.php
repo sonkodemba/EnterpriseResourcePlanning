@@ -17,18 +17,12 @@ class CreateEmployeesTable extends Migration
             $table->id();
             $table->string('name')->unique();
             $table ->bigInteger('staff_id')->unique()->unsigned();
+            $table -> integer('social_security_no') -> unsigned() -> unique();
             $table ->string('email')->unique();
-            $table -> bigInteger('employee_education_id')->unsigned();
-            $table -> string('education');
             $table -> string('address');
-            $table -> integer('telephone_num') -> unsigned();
+            $table -> integer('telephone_num') -> unsigned() -> unique();
             $table -> mediumText('image');
-            $table -> bigInteger('department_id')->unsigned();
-            $table ->bigInteger('designation_id')->unsigned();
-            $table -> foreign('employee_education_id') ->references('id')->on('employee_education');
-            $table -> foreign('department_id')->references('id')->on('departments');
-            $table -> foreign('designation_id') ->references('id')->on('designations');
-            $table->softDeletes();
+             $table->softDeletes();
             $table->timestamps();
         });
     }

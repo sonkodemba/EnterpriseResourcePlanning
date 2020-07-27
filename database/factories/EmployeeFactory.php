@@ -8,12 +8,13 @@ use Faker\Generator as Faker;
 $factory->define(Employee::class, function (Faker $faker) {
     return [
         /**
-         * +-----------------------+-----------------+------+-----+---------+----------------+
+        +-----------------------+-----------------+------+-----+---------+----------------+
         | Field                 | Type            | Null | Key | Default | Extra          |
         +-----------------------+-----------------+------+-----+---------+----------------+
         | id                    | bigint unsigned | NO   | PRI | NULL    | auto_increment |
         | name                  | varchar(255)    | NO   | UNI | NULL    |                |
         | staff_id              | bigint unsigned | NO   | UNI | NULL    |                |
+        | social_security_no    | int unsigned    | NO   | UNI | NULL    |                |
         | email                 | varchar(255)    | NO   | UNI | NULL    |                |
         | employee_education_id | bigint unsigned | NO   | MUL | NULL    |                |
         | education             | varchar(255)    | NO   |     | NULL    |                |
@@ -30,8 +31,9 @@ $factory->define(Employee::class, function (Faker $faker) {
          */
         'name' => $faker -> name,
         'staff_id' => $faker -> randomNumber(5),
+        'social_security_no' => $faker -> randomNumber(5),
         'email' => $faker -> email,
-        'employee_education_id' => factory(\App\EmployeeEducation::class) ->create() -> id,
+        'employee_education_id' => factory(\App\EmployeeEducation::class) ->create(),
         'education' => $faker->sentence(3),
         'address' => $faker -> address,
         'telephone_num' => $faker-> randomNumber(7),

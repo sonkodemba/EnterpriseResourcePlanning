@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Auth;
 
+//use App\Events\UserCreatedEvents;
+use App\Events\UserRegistrationEvent;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\User;
@@ -52,9 +54,10 @@ class RegisterController extends Controller
     {
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
-            'staff_id'=> ['required','min:2','unique:users'],
+            'staff_id' => ['required','unique:users'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'user_category_id' => ['required']
         ]);
     }
 
@@ -66,14 +69,17 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-
-        return User::create([
+         $user = User::create([
             'name' => $data['name'],
-            'staff_id'=> $data['staff_id'],
+            'staff_id' => $data['staff_id'],
             'email' => $data['email'],
-//            'profile_image' => $data['image'],
             'password' => Hash::make($data['password']),
+            'user_category_id' => $data['user_category_id']
         ]);
+
+        event(new UserRegistrationEvent($user -> email));
+        return $user;
+
     }
 
 

@@ -179,18 +179,11 @@ return [
          * User Define  Service Providers
          */
 
-        App\Providers\DepartmentProvider::class,
-        App\Providers\DesignationProvider::class,
-        App\Providers\ProjectStatusProvider::class,
-        App\Providers\CompanyProvider::class,
-        App\Providers\ProjectProvider::class,
-        App\Providers\EmployeeEducation::class,
-        App\Providers\SupplierCategory::class,
-        App\Providers\SupplierProvider::class,
-        App\Providers\BatchProvider::class,
-        App\Providers\ItemCategoryProvider::class,
-        App\Providers\ItemModelProvider::class,
-        App\Providers\ProcessorProvider::class,
+        App\Providers\UserCategoryProvider::class,
+        App\Providers\EmploymentCategoryProvider::class,
+        App\Providers\BankProvider::class,
+        App\Providers\EvendCashDepositeProvider::class,
+
 
 
     ],

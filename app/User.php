@@ -2,14 +2,17 @@
 
 namespace App;
 
+use App\Traits\Users;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Hash;
 
 class User extends Authenticatable
 {
-    use Notifiable;
+    use Notifiable,Users;
 
     /**
      * The attributes that are mass assignable.
@@ -17,7 +20,14 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name','staff_id', 'email', 'password','profile_image'
+        'name', 'email','staff_id', 'password','user_category_id','current_login_ip',
+        'last_login_at','last_login_ip','last_logout_at',
+    ];
+
+    protected $dates = [
+        'current_login_at',
+        'last_login_at',
+        'last_logout_at'
     ];
 
     /**
@@ -38,94 +48,33 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+
+    public function  role()
+    {
+        return $this->belongsTo(UserCategory::class, 'user_category_id');
+    }
+
+//    public function hasRole($name)
+//    {
+//        return $this->role() -> name = $name;
+//     }
+
     public function employee()
     {
-        return $this->belongsTo(Employee::class);
+        return $this->belongsTo(Employee::class,'staff_id');
     }
 
 
-    public function project()
+    public function evend()
     {
-       return $this->hasMany(Project::class);
+        $this->hasMany(User::class);
+
     }
 
-    public function task()
+    public function collection()
     {
-       return $this->hasManyThrough(Task::class,Project::class);
+        return $this->hasMany(CashCollection::class,'staff_id');
     }
 
 
-    public function company()
-    {
-       return $this->belongsTo(Company::class);
-    }
-
-    public function comment()
-    {
-       return $this->hasMany(User::class);
-    }
-
-    public function companyuser()
-    {
-        return $this->belongsTo(CompanyUser::class);
-
-    }
-
-    public function projectuser()
-    {
-
-        return $this->belongsTo(ProjectUser::class);
-
-    }
-
-    /**
-     * Create Accessors and Mutators
-     */
-//    public function setNameAttribute($name)
-//    {
-//        /**
-//         * Setting the Name into the Database
-//         * This mean that Setting the name into the databse
-//         * Will Equate to UpperCase into the Database
-//         *
-//         * Notice that whenever you are saving into the database,
-//         * The first Letter of the name will be Capitalized
-//         */
-//        $this->attributes['name'] = ucfirst($name);
-//    }
-//
-//    public function setEmailAttribute($email)
-//    {
-//        /**
-//         * Set Email to Lower case characters before inserting into
-//         * Database
-//         */
-//        $this->attributes['email'] = strtolower($email);
-//    }
-//
-//    public function setPasswordAttribute($password)
-//    {
-//        /**
-//         *  Hash the password then equate to password field in the
-//         * Database
-//         */
-//        $this->attributes['password'] = Hash::make($password);
-//    }
-//
-//    public function getNameAttribute($name)
-//    {
-//        /**
-//         * Get the name and then convert the First Latter to Upper case Letter
-//         */
-//        return ucfirst($name);
-//    }
-//
-//    public function getPasswordAttribute($password)
-//    {
-//        /**
-//         * get password from the database
-//         */
-//
-//        return $password;
-//    }
 }

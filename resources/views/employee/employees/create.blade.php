@@ -22,29 +22,20 @@
                         <input type="number" name="staff_id" class="form-control" id="staffid" placeholder="Staff ID">
                     </div>
                 </div>
+
+                <div class="form-group row">
+                    <label for="Name" class="col-sm-2 col-form-label">Social Security No.</label>
+                    <div class="col-sm-10">
+                        <input type="number" name="social_security_no" class="form-control" id="staffid" placeholder="Staff ID">
+                    </div>
+                </div>
                 <div class="form-group row">
                     <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
                     <div class="col-sm-10">
                         <input type="email" name="email" class="form-control" id="inputEmail3" placeholder="Email">
                     </div>
                 </div>
-                <div class="form-group row">
-                    <label for="Department" class="col-sm-2 col-form-label">Education</label>
-                    <div class="col-sm-10" >
-                        <select name="education_id" id="departmentId" class="selectpicker" data-style="select-with-transition" title="departmentTitle">
-                            @foreach($empEducation as $Education)
-                                <option value="{{$Education -> id}}">{{$Education -> education}}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                </div>
 
-                <div class="form-group row">
-                    <label for="inputEmail3" class="col-sm-2 col-form-label">Discipline</label>
-                    <div class="col-sm-10">
-                        <input type="text" name="education" class="form-control" id="inputEmail3" placeholder="Email">
-                    </div>
-                </div>
                     <div class="form-group row">
                         <label for="post" class="col-sm-2 col-form-label">Upload</label>
                             <div class="file col-sm-10">
@@ -52,28 +43,7 @@
                                 <label class="custom-file-label" for="exampleInputFile">Choose file</label>
                             </div>
                     </div>
-                    <div class="form-group row">
-                        <label for="Department" class="col-sm-2 col-form-label">Department</label>
-                        <div class="col-sm-10" >
-                            <select name="department" id="departmentId"  class="selectpicker" data-style="select-with-transition" title="departmentTitle">
-                                @foreach($departments as $department)
-                                    <option value="{{$department -> id}}">{{$department -> name}}</option>
-                                @endforeach
-                            </select>
-                        </div>
-
-                        <label for="Designations" class="col-sm-2 col-form-label">Designations</label>
-                        <div class="col-sm-10" >
-                            <select name="designation" id="designationId" class="selectpicker" data-style="select-with-transition" title="designationTitle">
-                                @foreach($designations as $designation)
-                                    <option value="{{$designation -> id}}">{{$designation -> name}}</option>
-                                @endforeach
-                            </select>
-                        </div>
-
-
-
-                </div>
+                    </div>
                 <div class="form-group row">
                     <label for="post" class="col-sm-2 col-form-label">Address</label>
                     <div class="col-sm-10">

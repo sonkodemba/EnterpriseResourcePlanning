@@ -3,56 +3,55 @@
 namespace App\Http\Controllers;
 
 use App\Employee;
+use App\Http\Requests\EmployeeFormRequest;
+use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Routing\Redirector;
+use Illuminate\View\View;
 
 class EmployeeController extends Controller
 {
 
     public function __construct()
     {
-//        $this->middleware('auth');
+        $this->middleware('auth');
     }
 
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return Factory|View
      */
     public function index()
     {
-        $employees = Employee::paginate(3);
+        $employees = Employee::latest() -> paginate(4);
         return view('employee.employees.index',compact('employees'));
     }
 
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return Factory|View
      */
     public function create()
     {
-        //
         return  view('employee.employees.create');
     }
 
     /**
      * Store a newly created resource in storage.
      *
+     * @param EmployeeFormRequest $request
      * @param Employee $employee
-     * @param Request $request
      * @return string
      */
-    public function store(Request $request, Employee $employee)
+    public function store(EmployeeFormRequest $request, Employee $employee)
     {
 
-//        $employee = new Employee();
         $employee -> name = $request['name'];
        $staff_id =  $employee->staff_id = $request['staff_id'];
+       $employee -> social_security_no = $request['social_security_no'];
         $employee -> email = $request['email'];
-        $employee->employee_education_id = $request['education_id'];
-        $employee -> education = $request['education'];
         if ($request->file('image')){
             $file = $request->file('image');
             $extension = $file->getClientOriginalExtension();
@@ -63,8 +62,6 @@ class EmployeeController extends Controller
             return $request;
             $employee->image = '';
         }
-        $employee -> department_id = $request['department'];
-        $employee -> designation_id = $request['designation'];
         $employee -> address = $request['address'];
         $employee -> telephone_num = $request['telephone_num'];
 
@@ -77,18 +74,18 @@ class EmployeeController extends Controller
      * Display the specified resource.
      *
      * @param  \App\Employee  $employee
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return Factory|View
      */
     public function show(Employee $employee)
     {
-        return view('employees.show',compact('employee'));
+        return view('employee.employees.show',compact('employee'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
      * @param  \App\Employee  $employee
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return Factory|View
      */
     public function edit(Employee $employee)
     {
@@ -110,7 +107,6 @@ class EmployeeController extends Controller
         $employee -> name = $request['name'];
         $staff_id = $employee->staff_id = $request['staff_id'];
         $employee->email = $request['email'];
-        $employee->post = $request['post'];
 
         if ($request->file('image')){
             $file = $request->file('image');
@@ -136,6 +132,6 @@ class EmployeeController extends Controller
     {
         $employee =Employee::find($request->id);
         $employee->delete();
-        return redirect()->route('employees.index')->with('employee',$employee);
+        return redirect()->route('employees.index')->with('success',$employee -> name.' Deleted Successfully');
     }
 }

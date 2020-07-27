@@ -20,6 +20,7 @@ $factory->define(EmployeeEducation::class, function (Faker $faker) {
         +--------------+-----------------+------+-----+---------+----------------+
 
          */
+        'code' => \Illuminate\Support\Str::random(4),
         'education' => $faker -> name,
         'descriptions' => $faker -> sentence(4)
     ];

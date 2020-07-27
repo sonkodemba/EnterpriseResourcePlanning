@@ -3,7 +3,12 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Enterprise Resource Planning</title>
+    <title>::ERP</title>
+{{--    <link rel="icon" href="{{asset('upload/logo/premier-solution.jpeg') }}"/>--}}
+    <link rel="icon" href="{{asset('upload/logo/Lambda1.png') }}"/>
+
+
+
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Font Awesome -->
@@ -32,123 +37,48 @@
 <div class="wrapper">
 
     <!-- Navbar -->
-    <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+    <nav class="main-header navbar navbar-expand navbar-white navbar-light" >
         <!-- Left navbar links -->
         <ul class="navbar-nav">
-            <li class="nav-item">
-                <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
-            </li>
-            <li class="nav-item d-none d-sm-inline-block">
-                <a href="index3.html" class="nav-link">Home</a>
-            </li>
-            <li class="nav-item d-none d-sm-inline-block">
-                <a href="#" class="nav-link">Contact</a>
-            </li>
+{{--            <li class="nav-item">--}}
+{{--                <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>--}}
+{{--            </li>--}}
+{{--            <li class="nav-item d-none d-sm-inline-block">--}}
+{{--                <a href="{{route('home')}}" class="nav-link">Home</a>--}}
+{{--            </li>--}}
+{{--            <li class="nav-item d-none d-sm-inline-block">--}}
+{{--                <a href="#" class="nav-link">Contact</a>--}}
+{{--            </li>--}}
         </ul>
 
         <!-- SEARCH FORM -->
-        <form class="form-inline ml-3">
-            <div class="input-group input-group-sm">
-                <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
-                <div class="input-group-append">
-                    <button class="btn btn-navbar" type="submit">
-                        <i class="fas fa-search"></i>
-                    </button>
-                </div>
-            </div>
-        </form>
+{{--        <form class="form-inline ml-3">--}}
+{{--            <div class="input-group input-group-sm">--}}
+{{--                <input style="background-color: lightyellow" class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">--}}
+{{--                <div class="input-group-append">--}}
+{{--                    <button class="btn btn-navbar" type="submit">--}}
+{{--                        <i class="fas fa-search"></i>--}}
+{{--                    </button>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </form>--}}
 
         <!-- Right navbar links -->
         <ul class="navbar-nav ml-auto">
             <!-- Messages Dropdown Menu -->
             <li class="nav-item dropdown">
                 <a class="nav-link" data-toggle="dropdown" href="#">
-                    <i class="far fa-comments"></i>
-                    <span class="badge badge-danger navbar-badge">3</span>
+                    <h1 class="badge btn-outline-success">
+                        <i class="far fa-user">
+
+                            {{auth() -> user() -> email}}
+                        </i>
+                    </h1>
                 </a>
+
+
                 <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                    <a href="#" class="dropdown-item">
-                        <!-- Message Start -->
-                        <div class="media">
-                            <img src="{{asset('dist/img/user1-128x128.jpg')}}" alt="User Avatar" class="img-size-50 mr-3 img-circle">
-                            <div class="media-body">
-                                <h3 class="dropdown-item-title">
-                                    Brad Diesel
-                                    <span class="float-right text-sm text-danger"><i class="fas fa-star"></i></span>
-                                </h3>
-                                <p class="text-sm">Call me whenever you can...</p>
-                                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-                            </div>
-                        </div>
-                        <!-- Message End -->
-                    </a>
-                    <div class="dropdown-divider"></div>
-                    <a href="#" class="dropdown-item">
-                        <!-- Message Start -->
-                        <div class="media">
-                            <img src="{{asset('dist/img/user8-128x128.jpg')}}" alt="User Avatar" class="img-size-50 img-circle mr-3">
-                            <div class="media-body">
-                                <h3 class="dropdown-item-title">
-                                    John Pierce
-                                    <span class="float-right text-sm text-muted"><i class="fas fa-star"></i></span>
-                                </h3>
-                                <p class="text-sm">I got your message bro</p>
-                                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-                            </div>
-                        </div>
-                        <!-- Message End -->
-                    </a>
-                    <div class="dropdown-divider"></div>
-                    <a href="#" class="dropdown-item">
-                        <!-- Message Start -->
-                        <div class="media">
-                            <img src="{{asset('dist/img/user3-128x128.jpg')}}" alt="User Avatar" class="img-size-50 img-circle mr-3">
-                            <div class="media-body">
-                                <h3 class="dropdown-item-title">
-                                    Nora Silvester
-                                    <span class="float-right text-sm text-warning"><i class="fas fa-star"></i></span>
-                                </h3>
-                                <p class="text-sm">The subject goes here</p>
-                                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-                            </div>
-                        </div>
-                        <!-- Message End -->
-                    </a>
-                    <div class="dropdown-divider"></div>
-                    <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
                 </div>
-            </li>
-            <!-- Notifications Dropdown Menu -->
-            <li class="nav-item dropdown">
-                <a class="nav-link" data-toggle="dropdown" href="#">
-                    <i class="far fa-bell"></i>
-                    <span class="badge badge-warning navbar-badge">15</span>
-                </a>
-                <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                    <span class="dropdown-item dropdown-header">15 Notifications</span>
-                    <div class="dropdown-divider"></div>
-                    <a href="#" class="dropdown-item">
-                        <i class="fas fa-envelope mr-2"></i> 4 new messages
-                        <span class="float-right text-muted text-sm">3 mins</span>
-                    </a>
-                    <div class="dropdown-divider"></div>
-                    <a href="#" class="dropdown-item">
-                        <i class="fas fa-users mr-2"></i> 8 friend requests
-                        <span class="float-right text-muted text-sm">12 hours</span>
-                    </a>
-                    <div class="dropdown-divider"></div>
-                    <a href="#" class="dropdown-item">
-                        <i class="fas fa-file mr-2"></i> 3 new reports
-                        <span class="float-right text-muted text-sm">2 days</span>
-                    </a>
-                    <div class="dropdown-divider"></div>
-                    <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
-                </div>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
-                    <i class="fas fa-th-large"></i>
-                </a>
             </li>
         </ul>
     </nav>
@@ -157,97 +87,22 @@
     <!-- Main Sidebar Container -->
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
         <!-- Brand Logo -->
-{{--        <a href="index3.html" class="brand-link">--}}
-{{--            <img src="{{asset('dist/img/AdminLTELogo.png')}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"--}}
-{{--                 style="opacity: .8">--}}
-{{--            <span class="brand-text font-weight-light">AdminLTE 3</span>--}}
-{{--        </a>--}}
+        <a href="" class="brand-link">
+
+            <img src="{{asset('upload/logo/lambdaExpress.gif')}}"  class="brand-image img-circle elevation-3"
+                 style="opacity: .8">
+            <span class="brand-text font-weight-light">
+                <strong style="color: red">Expressions</strong>
+            </span>
+        </a>
 
         <!-- Sidebar -->
         <div class="sidebar">
-            <!-- Sidebar user panel (optional) -->
-            <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-                <div class="image">
-                    <img src="{{asset('upload/profile/11563.jpg    ')}}" class="img-circle elevation-2" alt="User Image">
-                </div>
-                <div class="info">
-                    <a href="#" class="d-block">Demba Sonko</a>
-                </div>
-            </div>
-
-            <!-- Sidebar Menu -->
             <nav class="mt-2">
-                <p class="badge badge-btn">Supplier</p>
-                <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                    <li class="nav-item">
-                        <a href="{{route('suppliers.index')}}" class="nav-link">
-                            <i class="fa fa-supple">
 
-                                Suppliers
+                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 
-                            </i>
-                        </a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a href="{{route('suppliercategories.index')}}" class="nav-link">
-                            <i class="fa fa-icons">
-
-                                Supplier Category
-
-                            </i>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{route('items.index')}}" class="nav-link">
-                            <i class="fa fa-icons">
-
-                                Items
-
-                            </i>
-                        </a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a href="{{route('batches.index')}}" class="nav-link">
-                            <i class="fa fa-icons">
-
-                                Batches / Consignments
-
-                            </i>
-                        </a>
-                    </li>
-
-                    <li class="nav-item has-treeview menu-open">
-                    <li class="nav-item">
-                        <a href="{{route('itemcategories.index')}}" class="nav-link action  ">
-                            <i class="fa fa-icons">
-
-                                Item Category
-
-                            </i>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{route('processors.index')}}" class="nav-link action  ">
-                            <i class="fa fa-icons">
-
-                                Processors
-
-                            </i>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{route('itemmodels.index')}}" class="nav-link action  ">
-                            <i class="fa fa-icons">
-
-                                Item Model / Brand
-
-                            </i>
-                        </a>
-                    </li>
-
-                    <li class="nav-item">
+                     <li class="nav-item">
                         <a href="{{route('employees.index')}}" class="nav-link">
                             <i class="fa fa-user-plus">
 
@@ -256,9 +111,9 @@
                             </i>
                         </a>
                     </li>
-                    <li class="nav-item">
+                      <li class="nav-item">
                         <a href="{{route('educations.index')}}" class="nav-link">
-                            <i class="fa fa-building"></i>
+                            <i class="fa fa-graduation-cap"></i>
                             <p>
                                Employee Education
                             </p>
@@ -266,55 +121,95 @@
                         </a>
                     </li>
 
-                    <li class="nav-item">
-                        <a href="{{route('departments.index')}}" class="nav-link">
-                            <i class="fa fa-building"></i>
+                    <li class="nav-item has-treeview">
+                        <a href="{{route('categories.create')}}" class="nav-link">
+                            <i class="nav-icon fas fa-user-friends"></i>
                             <p>
-                                Department
+                                Employment Category
                             </p>
 
                         </a>
                     </li>
+                     <li class="nav-item has-treeview">
+                        <a href="{{route('users.index')}}" class="nav-link">
+                            <i class="nav-icon fas fa-user-friends"></i>
+                            <p>
+                                Users
+                            </p>
+
+                        </a>
+                    </li>
+                         <li class="nav-item">
+                             <a href="{{route('banks.index')}}" class="nav-link">
+                                 <i class="fa fa-ice-cream">
+
+                                     Bank
+
+                                 </i>
+                             </a>
+                         </li>
+                    <li class="nav-item has-treeview">
+                        <a href="{{route('usercategories.index')}}" class="nav-link">
+                            <i class="nav-icon fas fa-user-secret"></i>
+                            <p>
+                                User Category
+                            </p>
+
+                        </a>
+                    </li>
+
+                       <li class="nav-item has-treeview">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-copy"></i>
+                                <p>
+                                    E-vend System
+                                    <i class="fas fa-angle-left right"></i>
+                                 </p>
+                            </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{{route('evends.index')}}" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>CashPower</p>
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a href="{{route('endOfDays.index')}}" class="nav-link">
+                                    <i class="far fa-arrow-circle-o-right nav-icon"></i>
+                                    <p>End Of Day</p>
+                                </a>
+                            </li>
+{{--                            @endcannot--}}
+{{--                            @cannot('isUser')--}}
+                            <li class="nav-item">
+                                <a href="{{route('cashDeposites.index')}}" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Cash Deposite</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{route('cashCollections.index')}}" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Cash Collection</p>
+                                </a>
+                            </li>
+{{--                            @endcannot--}}
 
                     <li class="nav-item has-treeview">
-                        <a href="{{route('designations.index')}}" class="nav-link">
-                            <i class="fa fa-ticket-alt"></i>
-                            <p>
-                                Designation / Title
-                            </p>
-                        </a>
                     </li>
-                    <p class="h6">Projects</p>
-                    <li class="nav-item has-treeview">
-                        <a href="{{route('projects.index')}}" class="nav-link">
-                            <i class="nav-icon fas fa-project-diagram"></i>
-                            <p>
-                                Projects
-                            </p>
-
-                        </a>
-                    </li>
-                    <li class="nav-item has nav-treeview">
-                        <a href="{{route('tasks.index')}}" class="nav-link">
-                            <i class=" fa fa-tasks"></i>
-                            <p>
-                                Task
-                            </p>
-                        </a>
+                        </ul>
 
                     </li>
-                    <li class="nav-item has-treeview">
-                        <a href="{{route('companies.index')}}" class="nav-link">
-                            <i class="nav-icon far fa-plus-square"></i>
-                            <p>
-                                Company
-                             </p>
-                        </a>
+
+                   <ul>
                      <li class="nav-item">
                         <a class="nav-link" href="{{ route('logout') }}"
                            onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                            {{ __('Logout') }}
+                            document.getElementById('logout-form').submit();">
+                            <h2 class="badge badge-danger">
+                                <i class="fa fa-lock"> {{ __('Logout') }}</i>
+                            </h2>
                         </a>
 
 
@@ -322,31 +217,30 @@
                             @csrf
                         </form>
                     </li>
-                </ul>
+
             </nav>
         </div>
+        </div>
+
             <!-- /.sidebar-menu -->
         </div>
 
-        <!-- /.sidebar -->
-    </aside>
 
-    <!-- Content Wrapper. Contains page content -->
-    <div class="content-wrapper">
-        @include('partials.errors')
+
+<div class="content-wrapper" >
+         @include('partials.errors')
         @include('partials.success')
-        <!-- Content Header (Page header) -->
-{{--            <div class="row">--}}
+
        @yield('content')
-{{--            </div>--}}
-        <!-- /.content -->
+
     </div>
     <!-- /.content-wrapper -->
     <footer class="main-footer">
-        <small>Copyright &copy; 2019-2020, Powered By <a  class="#" href="#"> Premier Solutions</a></small>
-        All rights reserved.
+        <small class="badge btn-outline-danger">Copyright &copy; 2019-2020 <a  class="#" href="#"></a>All rights reserved.</small>
+
         <div class="float-right d-none d-sm-inline-block">
             <b>Version</b> 3.0.4
+{{--            <b>{{gethostbyaddr(ip2long())}}</b>--}}
         </div>
     </footer>
 
@@ -394,5 +288,6 @@
 <script src="{{asset('dist/js/pages/dashboard.js')}}"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="{{asset('dist/js/demo.js')}}"></script>
+
 </body>
 </html>

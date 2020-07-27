@@ -2,24 +2,28 @@
 
 namespace App;
 
+use App\Traits\Employees;
 use Illuminate\Database\Eloquent\Model;
 
 class Employee extends Model
 {
-    //
+    use Employees;
+    /**
+     * @var string use Accessor and Mutator
+     */
 
     protected $table  = 'employees';
-    protected $fillable = ['name','staff_id','email','post','image','address','telephone_num'];
+    protected $fillable = ['name','staff_id','email','image','address','telephone_num'];
     protected $hidden =['created_at','updated_at','deleted_at'];
 
-    public function item()
+    public function itememployee()
     {
-        return $this->hasMany(Item::class);
+        return $this->hasMany(ItemEmployee::class);
     }
 
     public function department()
     {
-        return $this->belongsTo(Department::class);
+        return $this->belongsTo(Department::class,'department_id');
     }
 
     public function designation()
@@ -38,72 +42,19 @@ class Employee extends Model
 
     }
 
-    public function company()
+    public function employmentcategory()
     {
-        return $this->hasManyThrough(Company::class,User::class);
+        return $this->belongsTo(EmploymentCategory::class);
     }
 
-    public function project()
+    public function evend()
     {
-        return $this->hasManyThrough(Project::class, User::class);
+        $this->hasManyThrough(Evend::class, Employee::class,'staff_id','user_id');
     }
 
-    public function comment()
+    public function collector()
     {
-        return $this->hasManyThrough(Comment::class, User::class);
+        return $this->hasManyThrough(CashCollection::class,User::class,'staff_id','staff_d');
     }
-
-    /**
-     * For Company User
-     */
-    public function companyUser()
-    {
-        return $this->hasManyThrough(CompanyUser::class, User::class);
-    }
-
-
-//    /**
-//     * Mutators and Accessors
-//     */
-//
-//    public function getNameAttribute($name)
-//    {
-//        $this->attributes['name'] = ucfirst($name);
-//    }
-//
-//    public function setNameAttribute($name)
-//    {
-//        return ucfirst($name);
-//    }
-//
-//    protected function getEmailAttribute($email)
-//    {
-//        $this->attributes['email'] = $email;
-//    }
-//
-//
-//    public function setEmailAttribute($email)
-//    {
-//        return strtolower($email);
-//    }
-//
-//    public function getPostAttribute($post)
-//    {
-//        $this->attributes['post'] = ucfirst($post);
-//    }
-//    public function setPostAttribute($post)
-//    {
-//        return $post;
-//    }
-//
-//    public function getImageAttribute($image)
-//    {
-//        $this->attributes['image'] = $image;
-//    }
-//    public function setImageAttribute($image)
-//    {
-//        return $image;
-//    }
-//
 
 }
